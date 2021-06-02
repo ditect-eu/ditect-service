@@ -14,9 +14,13 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>ditect-service</name>
   <description>Demo project for Spring Boot</description>
+
   <properties>
     <java.version>11</java.version>
+    <docker.registry>192.168.1.90:5000</docker.registry>
+    <jib.version>3.0.0</jib.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -94,6 +98,25 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>${jib.version}</version>
+        <configuration>
+          <from>
+            <image>gcr.io/distroless/java:11</image>
+          </from>
+          <to>
+            <image>${docker.registry}/${project.artifactId}</image>
+            <tags>
+              <tag>${project.version}</tag>
+              <tag>latest</tag>
+            </tags>
+          </to>
+          <allowInsecureRegistries>true</allowInsecureRegistries>
+        </configuration>
+      </plugin>
+
     </plugins>
   </build>
 
