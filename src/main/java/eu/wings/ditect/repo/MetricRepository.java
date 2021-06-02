@@ -1,6 +1,6 @@
 package eu.wings.ditect.repo;
 
-import eu.wings.ditect.domain.Metric;
+import eu.wings.ditect.domain.mongo.Metric;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

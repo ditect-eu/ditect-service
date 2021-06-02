@@ -1,5 +1,6 @@
-package eu.wings.ditect.domain;
+package eu.wings.ditect.domain.mongo;
 
+import eu.wings.ditect.domain.Region;
 import java.util.List;
 import java.util.Map;
 import lombok.Builder;
@@ -23,9 +24,10 @@ public class Metric {
   private String pilotCode;
   private Region region;
   private String country;
-  private Boolean manufacturingProcessing;
-  private Boolean primaryProduction;
-  private Boolean distributionRetail;
+  private boolean manufacturingProcessing;
+  private boolean primaryProduction;
+  private boolean distributionRetail;
+  private boolean packingStage;
   private String instrumentName;
   private String typeOfAnalysis;
   /**
