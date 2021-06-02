@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      host: ${DB_HOST:localhost}
+      port: 27017
+      database: ditect
+      username: ${DB_USER:admin}
+      password: ${DB_PASS:admin}
+      authentication-database: admin
+
+logging:
+  level:
+    org.springframework.data: debug

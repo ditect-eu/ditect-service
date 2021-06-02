@@ -1,8 +1,10 @@
 package eu.wings.ditect.domain;
 
-import eu.wings.ditect.domain.Region;
 import java.util.List;
 import java.util.Map;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,6 +12,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Represent an instrument metric with meta data.
  */
 @Document
+@Getter
+@Setter
+@Builder
 public class Metric {
 
   @Id

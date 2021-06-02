@@ -1,5 +1,7 @@
 package eu.wings.ditect.service;
 
+import java.util.List;
+import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -7,5 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface ProcessFileSrv {
 
-  void read(MultipartFile file);
+  List<Map<String, Object>> read(MultipartFile file);
 }
