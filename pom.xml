@@ -17,7 +17,7 @@
 
   <properties>
     <java.version>11</java.version>
-    <docker.registry>192.168.1.90:5000</docker.registry>
+    <docker.registry>containerapi.internal.wings-ict-solutions.dev</docker.registry>
     <jib.version>3.0.0</jib.version>
   </properties>
 
