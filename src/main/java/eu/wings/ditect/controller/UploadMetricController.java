@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("api/v1/metric")
 @RequiredArgsConstructor
-public class UploadMetricController {
+class UploadMetricController {
 
   private final ProcessFileSrv processFileSrv;
 

@@ -6,7 +6,9 @@ import java.util.Map;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
+/**
+ * Represent an instrument metric with meta data.
+ */
 @Document
 public class Metric {
 

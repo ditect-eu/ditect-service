@@ -4,10 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DitectServiceApplication {
+class DitectServiceApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(DitectServiceApplication.class, args);
-    }
-
+  public static void main(String[] args) {
+    SpringApplication.run(DitectServiceApplication.class, args);
+  }
 }
