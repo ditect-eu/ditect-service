@@ -1,3 +1,5 @@
+jwk-set-uri: ${JWK_URI:http://192.168.1.46:8082/auth/realms/ditect-service/protocol/openid-connect/certs}
+
 spring:
   data:
     mongodb:
@@ -7,7 +9,14 @@ spring:
       username: ${DB_USER:admin}
       password: ${DB_PASS:admin}
       authentication-database: admin
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:16MB}
+      max-request-size: ${MAX_FILE_SIZE:16MB}
 
 logging:
   level:
-    org.springframework.data: debug
+    org:
+      springframework:
+        security: debug
+        data: debug
