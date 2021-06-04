@@ -5,20 +5,23 @@ import eu.wings.ditect.domain.Region;
 import eu.wings.ditect.domain.mongo.Metric;
 import eu.wings.ditect.repo.MetricRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import org.bson.types.Binary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @RequiredArgsConstructor
-class MutateMetricSrv implements MutateSrv<MetricMetaRequest, String> {
+class MutateBinaryMetricSrv implements MutateSrv<MetricMetaRequest, String> {
 
   private final MetricRepository metricRepository;
-  private final ProcessFileSrv processFileSrv = new CsvProcessFileSrv();
 
+  @SneakyThrows
   public String mutate(MultipartFile file, MetricMetaRequest req) {
+    var fileBytes = file.getBytes();
     var metric = Metric.builder()
         .country(req.getCountry())
-        .data(processFileSrv.read(file))
+        .file(new Binary(fileBytes))
         .partner(req.getPartner())
         .region(Region.valueOf(req.getRegion()))
         .pilotCode(req.getPilotCode())

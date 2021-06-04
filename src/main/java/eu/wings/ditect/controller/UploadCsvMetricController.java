@@ -16,14 +16,15 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("api/v1/metric")
 @RequiredArgsConstructor
-class UploadMetricController {
+class UploadCsvMetricController {
 
-  private final MutateSrv<MetricMetaRequest, String> mutateSrv;
+  private final MutateSrv<MetricMetaRequest, String> mutateCsvMetricSrv;
 
+  // Upload a csv(specific content format) and save content as JSON.
   @PostMapping(value = "/upload", consumes = MULTIPART_FORM_DATA_VALUE)
   ResponseEntity<String> upload(@RequestPart("meta") MetricMetaRequest meta,
       @RequestPart("file") MultipartFile file) {
 
-    return new ResponseEntity<>(mutateSrv.mutate(file, meta), CREATED);
+    return new ResponseEntity<>(mutateCsvMetricSrv.mutate(file, meta), CREATED);
   }
 }

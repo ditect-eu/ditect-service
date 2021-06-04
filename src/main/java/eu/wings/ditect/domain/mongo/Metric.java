@@ -6,6 +6,7 @@ import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -34,4 +35,10 @@ public class Metric {
    * The actual metrics data.
    */
   private List<Map<String, Object>> data;
+
+  /**
+   * Small files (size <16MB).
+   */
+  private Binary file;
+  //TODO: file type?
 }
