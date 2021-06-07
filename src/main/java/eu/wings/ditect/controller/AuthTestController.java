@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/whoami")
-public class AuthTestController {
+class AuthTestController {
 
   @GetMapping
   public ResponseEntity<Map<String, Object>> whoami(@AuthenticationPrincipal Jwt jwt) {

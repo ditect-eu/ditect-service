@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AuditConfig implements AuditorAware<AuditUser<String>> {
+class AuditConfig implements AuditorAware<AuditUser<String>> {
 
   private static final String JWT_USER_NAME = "preferred_username";
 

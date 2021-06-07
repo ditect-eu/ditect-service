@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
  * @param <T> the primary key type.
  */
 @RequiredArgsConstructor
-final class AuditUser<T> {
+public final class AuditUser<T> {
 
   private final T id;
   private final String userName;
