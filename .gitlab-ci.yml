@@ -16,7 +16,6 @@ cache:
     - .m2/repository
 
 compile:
-  stage:
-    - build
+  stage: build
   script:
-    - 'mvn compile'
+    - mvn compile
