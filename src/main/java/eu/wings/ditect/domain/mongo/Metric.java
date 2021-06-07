@@ -1,13 +1,17 @@
 package eu.wings.ditect.domain.mongo;
 
 import eu.wings.ditect.domain.Region;
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.Binary;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -41,4 +45,12 @@ public class Metric {
    */
   private Binary file;
   //TODO: file type?
+
+  //TODO: What data you need? userName,userId or both ??
+  @CreatedBy
+  private AuditUser createdBy;
+
+  @Indexed
+  @CreatedDate
+  private Instant createdDate;
 }
