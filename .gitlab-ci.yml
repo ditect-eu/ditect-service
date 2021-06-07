@@ -22,8 +22,8 @@ build:
 
 deploy:
   stage: deploy
-    script:
-      - mvn $MAVEN_CLI_OPTS jib:build
-    only:
-      - master
+  script:
+    - mvn $MAVEN_CLI_OPTS jib:build
+  only:
+    - master
 
