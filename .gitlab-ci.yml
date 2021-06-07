@@ -16,11 +16,15 @@ cache:
     - .m2/repository
 
 build:
+  tags:
+    - mvn
   stage: build
   script:
     - mvn $MAVEN_CLI_OPTS compile
 
 deploy:
+  tags:
+    - mvn
   stage: deploy
   script:
     - mvn $MAVEN_CLI_OPTS jib:build
