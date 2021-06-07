@@ -118,6 +118,9 @@
             </tags>
           </to>
           <allowInsecureRegistries>true</allowInsecureRegistries>
+          <container>
+            <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+          </container>
         </configuration>
       </plugin>
 
