@@ -15,7 +15,15 @@ cache:
   paths:
     - .m2/repository
 
-compile:
+build:
   stage: build
   script:
-    - mvn compile
+    - mvn $MAVEN_CLI_OPTS compile
+
+deploy:
+  stage: deploy
+    script:
+      - mvn $MAVEN_CLI_OPTS jib:build
+    only:
+      - master
+
