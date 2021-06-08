@@ -46,7 +46,9 @@ dev-deploy:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh ubuntu@192.168.2.93
-    - "docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest
+    - "CONTAINER=$(docker ps -q  -f \"ancestor=containergui.internal.wings-ict-solutions.dev/ditect-service\")
+    && echo $CONTAINER | grep . && docker stop $CONTAINER
+    && docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest
     && docker run -p8080:8080 -p8081:8081 -e'DB_HOST=172.18.0.2' containergui.internal.wings-ict-solutions.dev/ditect-service -d
     && exit"
   when: manual
