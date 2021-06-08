@@ -14,6 +14,26 @@ spring:
       max-file-size: ${MAX_FILE_SIZE:16MB}
       max-request-size: ${MAX_FILE_SIZE:16MB}
 
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: ${MNGM_PORT:8081}
+
+info:
+  app:
+    encoding: "@project.build.sourceEncoding@"
+    java:
+      source: "@java.version@"
+      target: "@java.version@"
+
 logging:
   level:
     org:

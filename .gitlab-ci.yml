@@ -45,6 +45,9 @@ dev-deploy:
     - echo "$SSH_KNOWN_HOSTS" >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ssh -T ubuntu@192.168.2.93 "docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest && docker run -p8080:8080 -e'DB_HOST=172.18.0.2' containergui.internal.wings-ict-solutions.dev/ditect-service -d && exit"
+    - ssh ubuntu@192.168.2.93
+    - "docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest
+    && docker run -p8080:8080 -p8081:8081 -e'DB_HOST=172.18.0.2' containergui.internal.wings-ict-solutions.dev/ditect-service -d
+    && exit"
   when: manual
-# TODO: replace latest with tag version
+# TODO: replace latest with tag version & don't expose management port
