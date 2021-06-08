@@ -28,13 +28,19 @@ build:
     paths:
       - target/
 
-deploy:
-  stage: deploy
-  dependencies:
-    - build
+docker-build:
+  stage: build
   script:
     - mvn $MAVEN_CLI_OPTS jib:build
   only:
     - develop
     - master
 
+dev-deploy:
+  stage: deploy
+  script:
+    - ssh -i DiTECT-Dev.pem ubuntu@192.168.2.93
+    - docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest
+    - docker run -p8080:8080 -e'DB_HOST=172.18.0.2' containergui.internal.wings-ict-solutions.dev/ditect-service -d
+  when: manual
+# TODO: replace latest with tag version

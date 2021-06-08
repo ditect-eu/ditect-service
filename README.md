@@ -11,6 +11,8 @@ Import the following xml
 https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-google-style.xml
 
 ## Deployment
+Set up mongo db example:
+> docker run -p27017:27017 -e'MONGO_INITDB_ROOT_USERNAME=admin' -e'MONGO_INITDB_ROOT_PASSWORD=admin' mongo
 
 - Push an image to docker registry
 
