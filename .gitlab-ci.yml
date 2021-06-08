@@ -13,6 +13,7 @@ stages:
   - test
   - release
   - deploy
+  - rollout
 
 # Cache downloaded dependencies and plugins between builds.
 # To keep cache across branches add 'key: "$CI_JOB_NAME"'
@@ -29,7 +30,7 @@ build:
       - target/
 
 docker-build:
-  stage: build
+  stage: deploy
   script:
     - mvn $MAVEN_CLI_OPTS jib:build
   only:
@@ -37,7 +38,7 @@ docker-build:
     - master
 
 dev-deploy:
-  stage: deploy
+  stage: rollout
   script:
     - ssh -i DiTECT-Dev.pem ubuntu@192.168.2.93
     - docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest
