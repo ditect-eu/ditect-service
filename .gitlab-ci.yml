@@ -39,8 +39,8 @@ docker-build:
 
 dev-deploy:
   stage: rollout
-  before_script:
-    - ssh-keygen -R 192.168.2.93
+  #  before_script:
+  #    - ssh-keygen -R 192.168.2.93
   script:
     - ssh -tt -i DiTECT-Dev.pem ubuntu@192.168.2.93
     - docker pull containergui.internal.wings-ict-solutions.dev/ditect-service:latest
