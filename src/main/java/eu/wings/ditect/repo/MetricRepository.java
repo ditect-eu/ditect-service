@@ -1,6 +1,9 @@
 package eu.wings.ditect.repo;
 
 import eu.wings.ditect.domain.mongo.Metric;
+import java.time.Instant;
+import java.util.List;
+import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -8,4 +11,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface MetricRepository extends MongoRepository<Metric, String> {
 
+  List<Metric> findAllByCreatedDateIsBetween(Instant from, Instant to);
 }

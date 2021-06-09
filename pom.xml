@@ -15,6 +15,14 @@
   <name>ditect-service</name>
   <description>Demo project for Spring Boot</description>
 
+
+  <scm>
+    <url>http://192.168.200.50/internalfood/ditect-service</url>
+<!--    http://gitlab.wings-ict-solutions.dev/internalfood/ditect-service.git-->
+    <connection>scm:git:http://192.168.200.50/internalfood/ditect-service</connection>
+    <developerConnection>scm:git:ssh://git@gitlab.wings-ict-solutions.dev:internalfood/ditect-service.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
   <properties>
     <java.version>11</java.version>
     <docker.registry>containerapi.internal.wings-ict-solutions.dev</docker.registry>
