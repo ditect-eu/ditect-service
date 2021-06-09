@@ -11,7 +11,7 @@
   </parent>
   <groupId>com.wings.ditect</groupId>
   <artifactId>ditect-service</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.1-SNAPSHOT</version>
   <name>ditect-service</name>
   <description>Demo project for Spring Boot</description>
 
@@ -22,8 +22,6 @@
     <developerConnection>
       scm:git:http://gitlab.wings-ict-solutions.dev/internalfood/ditect-service.git
     </developerConnection>
-    <!--    <tag>ditect-service-0.0.1</tag>-->
-    <tag>ditect-service-0.0.1</tag>
   </scm>
   <properties>
     <java.version>11</java.version>
