@@ -11,14 +11,25 @@
   </parent>
   <groupId>com.wings.ditect</groupId>
   <artifactId>ditect-service</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
   <name>ditect-service</name>
   <description>Demo project for Spring Boot</description>
 
+
+  <scm>
+    <url>https://gitlab.wings-ict-solutions.dev//internalfood/ditect-service</url>
+    <connection>scm:git:https://gitlab.wings-ict-solutions.dev/internalfood/ditect-service</connection>
+    <developerConnection>
+      scm:git:https://gitlab.wings-ict-solutions.dev/internalfood/ditect-service.git
+    </developerConnection>
+    <tag>HEAD</tag>
+  </scm>
   <properties>
     <java.version>11</java.version>
-    <docker.registry>containerapi.internal.wings-ict-solutions.dev</docker.registry>
     <jib.version>3.0.0</jib.version>
+    <restdocs.version>2.0.5.RELEASE</restdocs.version>
+    <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+    <docker.registry>containerapi.internal.wings-ict-solutions.dev</docker.registry>
   </properties>
 
   <dependencies>
@@ -38,6 +49,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.restdocs</groupId>
+      <artifactId>spring-restdocs-mockmvc</artifactId>
+      <version>${restdocs.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -53,6 +69,11 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-test</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -124,6 +145,38 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <version>1.5.8</version>
+        <executions>
+          <execution>
+            <id>generate-docs</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>process-asciidoc</goal>
+            </goals>
+            <configuration>
+              <backend>html</backend>
+              <doctype>book</doctype>
+              <attributes>
+                <snippets>${snippetsDirectory}</snippets>
+              </attributes>
+              <sourceDirectory>${basedir}/docs/asciidocs</sourceDirectory>
+              <!-- <sourceDirectory>target/generated-snippets</sourceDirectory>-->
+              <outputDirectory>target/generated-docs</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.springframework.restdocs</groupId>
+            <artifactId>spring-restdocs-asciidoctor</artifactId>
+            <version>${restdocs.version}</version>
+          </dependency>
+        </dependencies>
+
+      </plugin>
     </plugins>
   </build>
 
