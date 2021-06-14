@@ -12,16 +12,21 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+  private static final String ACTUATOR_PATTERN = "/actuator/**";
+
   @Value("${jwk-set-uri}")
   private String jwkSetUri;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests(authorizeRequests -> authorizeRequests
-        .mvcMatchers("/actuator/**")
-        .permitAll()
-        .anyRequest()
-        .authenticated())
+    http
+        .csrf().ignoringAntMatchers(ACTUATOR_PATTERN)
+        .and()
+        .authorizeRequests(authorizeRequests -> authorizeRequests
+            .mvcMatchers(ACTUATOR_PATTERN)
+            .permitAll()
+            .anyRequest()
+            .authenticated())
         .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
   }
 

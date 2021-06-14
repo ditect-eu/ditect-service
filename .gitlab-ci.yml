@@ -29,6 +29,17 @@ build:
     paths:
       - target/
 
+release:
+  stage: release
+  before_script:
+    - git config user.email $CI_EMAIL
+    - git config user.name $CI_USER
+  script:
+    - mvn $MAVEN_CLI_OPTS release:prepare -B -Dusername=$CI_USER -Dpassword=$CI_PASS -Darguments="-DskipTests=true"
+    - mvn $MAVEN_CLI_OPTS release:perform -B -Dusername=$CI_USER -Dpassword=$CI_PASS -Darguments="-Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true -DskipTests=true"
+  only:
+    - develop #TODO replace with master
+
 docker-build:
   stage: deploy
   script:
