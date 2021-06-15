@@ -29,7 +29,7 @@
     <jib.version>3.0.0</jib.version>
     <restdocs.version>2.0.5.RELEASE</restdocs.version>
     <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
-    <docker.registry>registry.wings-ict-solutions.dev</docker.registry>
+    <docker.registry>registry.wings-ict-solutions.dev/internalfood</docker.registry>
   </properties>
 
   <dependencies>
@@ -132,7 +132,7 @@
             <image>gcr.io/distroless/java:11</image>
           </from>
           <to>
-<!--            <image>${docker.registry}/${project.artifactId}</image>-->
+            <image>${docker.registry}/${project.artifactId}</image>
             <tags>
               <tag>${project.version}</tag>
               <tag>latest</tag>
