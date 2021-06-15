@@ -14,6 +14,13 @@ https://raw.githubusercontent.com/google/styleguide/gh-pages/intellij-java-googl
 Set up mongo db example:
 > docker run -p27017:27017 -e'MONGO_INITDB_ROOT_USERNAME=admin' -e'MONGO_INITDB_ROOT_PASSWORD=admin' mongo
 
+- To release a version you should specify at manual job the variables 
+    - DEV_VER
+    - RELEASE_VER
+  
+  example
+>  RELEASE_VER 1.2.2 DEV_VER 1.2.3-SNAPSHOT
+
 - Push an image to docker registry
 
 > mvn jib:build
@@ -25,6 +32,7 @@ Set up mongo db example:
     -   DB_HOST
     -   DB_USER
     -   DB_PASS
+    -   MNGM_PORT
     
 ### Dev env
 
