@@ -43,8 +43,11 @@ release:
 
 docker-build:
   stage: deploy
+  before_script:
+    - echo "user is " $CI_REGISTRY_USER
+    - echo "with pass"  $CI_REGISTRY_PASSWORD
   script:
-    - mvn $MAVEN_CLI_OPTS jib:build -Djib.to.auth.username=$CI_REGISTRY_USER -Djib.to.auth.password=$CI_REGISTRY_PASSWORD
+    - mvn $MAVEN_CLI_OPTS jib:build -Djib.to.auth.username=ci -Djib.to.auth.password=5zrAxd1xYEnNPLN3hBnU
   only:
     - develop
     - master
