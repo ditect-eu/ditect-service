@@ -49,7 +49,7 @@ docker-build:
     - echo user is $CI_DEPLOY_USER
     - echo with pass  $CI_DEPLOY_PASSWORD
   script:
-    - mvn $MAVEN_CLI_OPTS jib:build -Djib.to.auth.username=$CI_DEPLOY_USER-Djib.to.auth.password=$CI_DEPLOY_PASSWORD
+    - mvn $MAVEN_CLI_OPTS jib:build -Djib.to.auth.username=$CI_REGISTRY_USER -Djib.to.auth.password=$PACKAGE_PWD
   only:
     - develop
     - master
