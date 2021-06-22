@@ -7,6 +7,7 @@ variables:
   # `installAtEnd` and `deployAtEnd` are only effective with recent version of the corresponding plugins.
   # -DinstallAtEnd=true -DdeployAtEnd=true
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+  CONTAINER_NAME: "containergui.internal.wings-ict-solutions.dev/ditect-service"
 
 stages:
   - build
@@ -35,8 +36,8 @@ release:
     - git config user.email $CI_EMAIL
     - git config user.name $CI_USER
   script:
-    - mvn $MAVEN_CLI_OPTS release:prepare -B -Dusername=$CI_USER -Dpassword=$CI_PASS -DreleaseVersion=$RELEASE_VER -DdevelopmentVersion=$DEV_VER -Darguments="-DskipTests=true"
-    - mvn $MAVEN_CLI_OPTS release:perform -B -Dusername=$CI_USER -Dpassword=$CI_PASS -Darguments="-Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true -DskipTests=true"
+    - mvn $MAVEN_CLI_OPTS release:prepare -Dusername=$CI_USER -Dpassword=$CI_PASS -DreleaseVersion=$RELEASE_VER -DdevelopmentVersion=$DEV_VER -Darguments="-DskipTests=true"
+    - mvn $MAVEN_CLI_OPTS release:perform -Dusername=$CI_USER -Dpassword=$CI_PASS -Darguments="-Dmaven.javadoc.skip=true -Dmaven.deploy.skip=true -DskipTests=true"
   only:
     - develop #TODO replace with master
   when: manual
@@ -58,10 +59,11 @@ dev-deploy:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh ubuntu@192.168.2.93
-    - "(CONTAINER=$(docker ps -q  -f \"ancestor=registry.wings-ict-solutions.dev/ditect-service\")
-    && echo $CONTAINER | grep . && docker stop $CONTAINER && docker rm -fv $CONTAINER)
-    || docker pull registry.wings-ict-solutions.dev/ditect-service:latest
-    && docker run -d -p8080:8080 -p8081:8081 -e'DB_HOST=172.18.0.2' registry.wings-ict-solutions.dev/ditect-service
+    - "(CONTAINER_ID=$(docker ps -qa  -f \"ancestor=$CONTAINER_NAME\")
+    && echo $CONTAINER_ID
+    && docker stop $CONTAINER_ID && docker rm -fv $CONTAINER_ID)
+    &&  docker pull $CONTAINER_NAME:latest
+    && docker run -d -p8080:8080 -p8081:8081 -e'DB_HOST=172.18.0.2' $CONTAINER_NAME
     && exit"
   when: manual
 # TODO: replace latest with tag version & don't expose management port
