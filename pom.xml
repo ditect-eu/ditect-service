@@ -22,7 +22,6 @@
     <developerConnection>
       scm:git:https://gitlab.wings-ict-solutions.dev/internalfood/ditect-service.git
     </developerConnection>
-    <tag>HEAD</tag>
   </scm>
   <properties>
     <java.version>11</java.version>
