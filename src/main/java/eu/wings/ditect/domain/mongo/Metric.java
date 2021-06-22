@@ -4,8 +4,10 @@ import eu.wings.ditect.domain.Region;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.Binary;
 import org.springframework.data.annotation.CreatedBy;
@@ -21,6 +23,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Metric {
 
   @Id
@@ -44,7 +48,7 @@ public class Metric {
    * Small files (size <16MB).
    */
   private Binary file;
-  //TODO: file type?
+  private String fileName;
 
   //TODO: What data you need? userName,userId or both ??
   @CreatedBy

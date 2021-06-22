@@ -11,4 +11,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface MetricRepository extends MongoRepository<Metric, String> {
 
   List<Metric> findAllByCreatedDateIsBetween(Instant from, Instant to);
+
+  <T> T findById(String id, Class<T> type);
 }

@@ -31,6 +31,7 @@ class MutateBinaryMetricSrv implements MutateSrv<MetricMetaRequest, String> {
         .instrumentName(req.getInstrumentName())
         .typeOfAnalysis(req.getTypeOfAnalysis())
         .distributionRetail(req.isDistributionRetail())
+        .fileName(file.getOriginalFilename())
         .build();
 
     return metricRepository.save(metric).getId();
