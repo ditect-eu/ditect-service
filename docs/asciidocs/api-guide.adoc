@@ -5,9 +5,9 @@
 == Index
 
 [[resources-index-upload]]
-=== Accessing the index
+=== Upload a file
 
-A `POST` request to updload a file with relative metadata.
+A `POST` request to upload a file with relative metadata.
 
 ==== Request structure
 
@@ -20,3 +20,20 @@ include::{snippets}/upload/response-body.adoc[]
 ==== CURL request
 
 include::{snippets}/upload/curl-request.adoc[]
+
+[[resources-index-find-metric-by-range]]
+=== Find metrics by datetime range
+
+A `GET` request to find metrics by given datetime range.
+
+==== Request structure
+
+include::{snippets}/find-metric-by-range/request-body.adoc[]
+
+==== Example response
+
+include::{snippets}/find-metric-by-range/response-fields.adoc[]
+
+==== CURL request
+
+include::{snippets}/find-metric-by-range/curl-request.adoc[]

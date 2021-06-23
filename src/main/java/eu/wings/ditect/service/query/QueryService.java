@@ -6,7 +6,7 @@ package eu.wings.ditect.service.query;
  * @param <C> the search criteria type.
  * @param <R> the result type.
  */
-public interface Query<C, R> {
+public interface QueryService<C, R> {
 
   /**
    * Search rely on given criteria.

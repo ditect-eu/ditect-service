@@ -33,7 +33,13 @@ Set up mongo db example:
     -   DB_USER
     -   DB_PASS
     -   MNGM_PORT
-    
+
+
+- Generate Rest api documentation
+> mvn clean package
+
+The generated documentation located at `./target/generated-docs/api-guide.html`
+
 ### Dev env
 
 At 192.168.1.46 path

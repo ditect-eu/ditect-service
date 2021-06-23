@@ -3,7 +3,7 @@ package eu.wings.ditect.controller;
 import static org.springframework.http.HttpHeaders.CONTENT_DISPOSITION;
 
 import eu.wings.ditect.domain.projection.FileContent;
-import eu.wings.ditect.service.query.Query;
+import eu.wings.ditect.service.query.QueryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 class FileDownloadController {
 
-  private final Query<String, FileContent> findFileSrv;
+  private final QueryService<String, FileContent> findFileSrv;
 
   @GetMapping("/download/{id}")
   ResponseEntity<byte[]> download(@PathVariable String id) {

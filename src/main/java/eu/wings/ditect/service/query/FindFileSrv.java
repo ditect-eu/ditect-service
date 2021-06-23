@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-class FindFileSrv implements Query<String, FileContent> {
+class FindFileSrv implements QueryService<String, FileContent> {
 
   private final MetricRepository metricRepository;
 
