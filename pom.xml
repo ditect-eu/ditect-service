@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.wings.ditect</groupId>
   <artifactId>ditect-service</artifactId>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>ditect-service</name>
   <description>Demo project for Spring Boot</description>
 
