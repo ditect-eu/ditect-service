@@ -192,14 +192,14 @@
     </plugins>
   </build>
 
-  <distributionManagement>
-    <repository>
-      <id>releases</id>
-      <url>https://gitlab.wings-ict-solutions.dev/api/v4/projects/162/packages/maven</url>
-    </repository>
-    <snapshotRepository>
-      <id>snapshots</id>
-      <url>https://gitlab.wings-ict-solutions.dev/api/v4/projects/162/packages/maven</url>
-    </snapshotRepository>
-  </distributionManagement>
+<!--  <distributionManagement>-->
+<!--    <repository>-->
+<!--      <id>releases</id>-->
+<!--      <url>https://gitlab.wings-ict-solutions.dev/api/v4/projects/162/packages/maven</url>-->
+<!--    </repository>-->
+<!--    <snapshotRepository>-->
+<!--      <id>snapshots</id>-->
+<!--      <url>https://gitlab.wings-ict-solutions.dev/api/v4/projects/162/packages/maven</url>-->
+<!--    </snapshotRepository>-->
+<!--  </distributionManagement>-->
 </project>
