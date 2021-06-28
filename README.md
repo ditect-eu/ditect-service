@@ -40,11 +40,6 @@ Set up mongo db example:
 
 The generated documentation located at `./target/generated-docs/api-guide.html`
 
-### Dev env
-
-At 192.168.1.46 path
-> /home/user/ditect_dev
-
 #### Identity Manager - Keycloak
 
 http://192.168.1.46:8082/
