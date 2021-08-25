@@ -25,6 +25,6 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to GitHub Container Registry
-        run: mvn compile com.google.cloud.tools:jib-maven-plugin:3.0.0:build -Dimage=ghcr.io/ditect-eu/ditect-service
+        run: mvn -Ddocker.registry=ghcr.io jib:build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
