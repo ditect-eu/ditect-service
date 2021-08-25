@@ -27,6 +27,6 @@ jobs:
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to GitHub Container Registry
-        run: mvn compile jib:build -Ddocker.registry=ghcr.io
+        run: mvn compile jib:build -Ddocker.registry=ghcr.io/ditect-eu
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
