@@ -15,7 +15,7 @@ class FindMetricByDateRangeSrv implements QueryService<DateRange, List<MetricWit
 
   @Override
   public List<MetricWithoutFileData> search(DateRange criteria) {
-    return metricRepository.findAllByCreatedDateIsBetween(
+    return metricRepository.findAllByInsertionDateIsBetween(
         criteria.getFrom(), criteria.getTo(), MetricWithoutFileData.class);
   }
 }

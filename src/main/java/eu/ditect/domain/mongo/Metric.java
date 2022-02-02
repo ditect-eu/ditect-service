@@ -15,6 +15,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * Represent an instrument metric with meta data.
@@ -29,16 +30,28 @@ public class Metric {
 
   @Id
   private String id;
+  @Field("ditect:partnerCode")
   private String partner;
+  @Field("ditect:pilotCode")
   private String pilotCode;
-  private Region region;
+  @Field("schema:country")
   private String country;
+  @Field("schema:region")
+  private Region region;
+  @Field("ditect:manufacturingProcessing")
   private boolean manufacturingProcessing;
+  @Field("ditect:primaryProduction")
   private boolean primaryProduction;
+  @Field("ditect:distributionRetail")
   private boolean distributionRetail;
+  @Field("ditect:packingStage")
   private boolean packingStage;
+  @Field("ditect:instrumentName")
   private String instrumentName;
+  @Field("ditect:typeOfAnalysis")
   private String typeOfAnalysis;
+  @Field("schema:dateCreated")
+  private Instant createdDate;
   /**
    * The actual metrics data.
    */
@@ -56,5 +69,6 @@ public class Metric {
 
   @Indexed
   @CreatedDate
-  private Instant createdDate;
+  private Instant insertionDate;
+
 }

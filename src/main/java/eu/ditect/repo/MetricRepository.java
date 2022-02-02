@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface MetricRepository extends MongoRepository<Metric, String> {
 
-  <T> List<T> findAllByCreatedDateIsBetween(Instant from, Instant to, Class<T> type);
+  <T> List<T> findAllByInsertionDateIsBetween(Instant from, Instant to, Class<T> type);
 
   <T> T findById(String id, Class<T> type);
 }
