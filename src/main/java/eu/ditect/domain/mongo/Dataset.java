@@ -25,10 +25,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Metric {
+public class Dataset {
 
   @Id
   private String id;
+  private String experimentId;
   private String partner;
   private String pilotCode;
   private String country;
@@ -58,5 +59,4 @@ public class Metric {
   @Indexed
   @CreatedDate
   private Instant insertionDate;
-
 }

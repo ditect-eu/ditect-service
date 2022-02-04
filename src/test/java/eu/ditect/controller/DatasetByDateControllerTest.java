@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import eu.ditect.domain.DateRange;
-import eu.ditect.domain.projection.MetricWithoutFileData;
+import eu.ditect.domain.projection.DatasetWithoutFileData;
 import eu.ditect.service.query.QueryService;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,15 +32,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @SpringBootTest
-class MetricByDateControllerTest {
+class DatasetByDateControllerTest {
 
   private MockMvc mockMvc;
-  private QueryService<DateRange, List<MetricWithoutFileData>> mockService;
+  private QueryService<DateRange, List<DatasetWithoutFileData>> mockService;
 
   @BeforeEach
   public void setUp(RestDocumentationContextProvider restDocumentation) {
     mockService = mock(QueryService.class);
-    mockMvc = MockMvcBuilders.standaloneSetup(new MetricByDateController(mockService))
+    mockMvc = MockMvcBuilders.standaloneSetup(new DatasetByDateController(mockService))
         .apply(documentationConfiguration(restDocumentation)
             .snippets().withDefaults(curlRequest(), requestBody(), responseBody()))
         .alwaysDo(document("{method-name}", preprocessRequest(prettyPrint()),
@@ -50,7 +50,7 @@ class MetricByDateControllerTest {
 
   @Test
   void findMetricByRange() throws Exception {
-    when(mockService.search(any())).thenReturn(List.of(mock(MetricWithoutFileData.class)));
+    when(mockService.search(any())).thenReturn(List.of(mock(DatasetWithoutFileData.class)));
 
     mockMvc.perform(get("/api/v1/metric/date/{from}/{to}",
         "2021-06-01T21:34:33.616Z", "2021-06-22T21:34:33.616Z"))

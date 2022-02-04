@@ -1,24 +1,27 @@
 package eu.ditect.service;
 
-import eu.ditect.domain.MetricMetaRequest;
+import eu.ditect.domain.DatasetMetaRequest;
 import eu.ditect.domain.Region;
-import eu.ditect.domain.mongo.Metric;
-import eu.ditect.repo.MetricRepository;
+import eu.ditect.domain.mongo.Dataset;
+import eu.ditect.repo.DatasetRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import org.bson.types.Binary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service
+@Service("mutateBinaryDatasetSrv")
 @RequiredArgsConstructor
-class MutateCsvMetricSrv implements MutateSrv<MetricMetaRequest, String> {
+class MutateBinaryDatasetSrv implements MutateSrv<DatasetMetaRequest, String> {
 
-  private final MetricRepository metricRepository;
-  private final ProcessFileSrv processFileSrv = new CsvProcessFileSrv();
+  private final DatasetRepository datasetRepository;
 
-  public String mutate(MultipartFile file, MetricMetaRequest req) {
-    var metric = Metric.builder()
+  @SneakyThrows
+  public String mutate(MultipartFile file, DatasetMetaRequest req) {
+    var fileBytes = file.getBytes();
+    var metric = Dataset.builder()
         .country(req.getCountry())
-        .data(processFileSrv.read(file))
+        .file(new Binary(fileBytes))
         .partner(req.getPartner())
         .region(Region.valueOf(req.getRegion()))
         .pilotCode(req.getPilotCode())
@@ -28,9 +31,9 @@ class MutateCsvMetricSrv implements MutateSrv<MetricMetaRequest, String> {
         .instrumentName(req.getInstrumentName())
         .typeOfAnalysis(req.getTypeOfAnalysis())
         .distributionRetail(req.isDistributionRetail())
+        .fileName(file.getOriginalFilename())
         .build();
-
-    return metricRepository.save(metric).getId();
+    return datasetRepository.save(metric).getId();
   }
 
 }

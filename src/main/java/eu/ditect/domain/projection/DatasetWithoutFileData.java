@@ -6,9 +6,11 @@ import eu.ditect.domain.Region;
 /**
  * Represents a metric without file content.
  */
-public interface MetricWithoutFileData {
+public interface DatasetWithoutFileData {
 
   String getId();
+
+  String getExperimentId();
 
   String getPartner();
 

@@ -1,6 +1,5 @@
 package eu.ditect.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
 import lombok.Data;
 
@@ -8,8 +7,9 @@ import lombok.Data;
  * The metric http request data.
  */
 @Data
-public final class MetricMetaRequest {
+public final class DatasetMetaRequest {
   private String partner;
+  private String experimentId;
   private String pilotCode;
   private String country;
   private String region;

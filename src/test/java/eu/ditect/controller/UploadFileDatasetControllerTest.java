@@ -17,7 +17,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.response
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import eu.ditect.domain.MetricMetaRequest;
+import eu.ditect.domain.DatasetMetaRequest;
 import eu.ditect.service.MutateSrv;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,15 +33,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @SpringBootTest
-class UploadFileMetricControllerTest {
+class UploadFileDatasetControllerTest {
 
   private MockMvc mockMvc;
-  private MutateSrv<MetricMetaRequest, String> mockService;
+  private MutateSrv<DatasetMetaRequest, String> mockService;
 
   @BeforeEach
   public void setUp(RestDocumentationContextProvider restDocumentation) {
     mockService = mock(MutateSrv.class);
-    this.mockMvc = MockMvcBuilders.standaloneSetup(new UploadFileMetricController(mockService))
+    this.mockMvc = MockMvcBuilders.standaloneSetup(new UploadFileDatasetController(mockService))
         .apply(documentationConfiguration(restDocumentation)
             .snippets().withDefaults(curlRequest(), requestBody(), responseBody()))
         .alwaysDo(document("{method-name}", preprocessRequest(prettyPrint()),
