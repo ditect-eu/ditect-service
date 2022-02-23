@@ -10,7 +10,7 @@ import org.bson.types.Binary;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service("mutateBinaryDatasetSrv")
+@Service
 @RequiredArgsConstructor
 class MutateBinaryDatasetSrv implements MutateSrv<DatasetMetaRequest, String> {
 

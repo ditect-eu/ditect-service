@@ -19,13 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 class UploadFileDatasetController {
 
-  @Qualifier("mutateBinaryDatasetSrv")
-  private final MutateSrv<DatasetMetaRequest, String> mutateBinaryMetricSrv;
+  private final MutateSrv<DatasetMetaRequest, String> mutateBinaryDatasetSrv;
 
   @PostMapping(value = "/upload", consumes = MULTIPART_FORM_DATA_VALUE)
   ResponseEntity<String> upload(@RequestPart("meta") DatasetMetaRequest meta,
       @RequestPart("file") MultipartFile file) {
 
-    return new ResponseEntity<>(mutateBinaryMetricSrv.mutate(file, meta), CREATED);
+    return new ResponseEntity<>(mutateBinaryDatasetSrv.mutate(file, meta), CREATED);
   }
 }

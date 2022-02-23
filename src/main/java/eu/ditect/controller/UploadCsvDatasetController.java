@@ -19,14 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 class UploadCsvDatasetController {
 
-  @Qualifier("mutateCsvDatasetSrv")
-  private final MutateSrv<DatasetMetaRequest, String> mutateCsvMetricSrv;
+  private final MutateSrv<DatasetMetaRequest, String> mutateCsvDatasetSrv;
 
   // Upload a csv(specific content format) and save content as JSON.
   @PostMapping(value = "/upload", consumes = MULTIPART_FORM_DATA_VALUE)
   ResponseEntity<String> upload(@RequestPart("meta") DatasetMetaRequest meta,
       @RequestPart("file") MultipartFile file) {
 
-    return new ResponseEntity<>(mutateCsvMetricSrv.mutate(file, meta), CREATED);
+    return new ResponseEntity<>(mutateCsvDatasetSrv.mutate(file, meta), CREATED);
   }
 }

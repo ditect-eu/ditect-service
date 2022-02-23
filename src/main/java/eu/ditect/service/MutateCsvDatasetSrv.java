@@ -1,6 +1,5 @@
 package eu.ditect.service;
 
-import eu.ditect.domain.License;
 import eu.ditect.domain.DatasetMetaRequest;
 import eu.ditect.domain.Region;
 import eu.ditect.domain.mongo.Dataset;
@@ -9,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service("mutateCsvDatasetSrv")
+@Service
 @RequiredArgsConstructor
 class MutateCsvDatasetSrv implements MutateSrv<DatasetMetaRequest, String> {
 
