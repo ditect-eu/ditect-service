@@ -1,4 +1,5 @@
 jwk-set-uri: ${JWK_URI:http://192.168.1.46:8082/auth/realms/ditect-service/protocol/openid-connect/certs}
+allowed-origins: ${ALLOWED_ORIGINS:http://localhost:8080}
 
 spring:
   data:
