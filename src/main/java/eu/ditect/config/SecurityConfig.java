@@ -30,6 +30,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http
         .csrf().ignoringAntMatchers(ACTUATOR_PATTERN)
+        .and().cors()
         .and()
         .authorizeRequests(authorizeRequests -> authorizeRequests
             .mvcMatchers(ACTUATOR_PATTERN)
