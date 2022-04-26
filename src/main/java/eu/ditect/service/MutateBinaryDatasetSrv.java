@@ -32,6 +32,15 @@ class MutateBinaryDatasetSrv implements MutateSrv<DatasetMetaRequest, String> {
         .typeOfAnalysis(req.getTypeOfAnalysis())
         .distributionRetail(req.isDistributionRetail())
         .fileName(file.getOriginalFilename())
+        .licensingInformation(req.getLicensingInformation())
+        .authors(req.getAuthors())
+        .shortDescription(req.getShortDescription())
+        .titleOfDocument(req.getTitleOfDocument())
+        .maze(req.isMaze())
+        .poultry(req.isPoultry())
+        .fish(req.isFish())
+        .beef(req.isBeef())
+        .createdDate(req.getCreatedDate())
         .build();
     return datasetRepository.save(metric).getId();
   }

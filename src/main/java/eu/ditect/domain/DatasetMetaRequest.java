@@ -20,4 +20,13 @@ public final class DatasetMetaRequest {
   private String instrumentName;
   private String typeOfAnalysis;
   private Instant createdDate;
+
+  private String licensingInformation;
+  private String authors;
+  private String shortDescription;
+  private String titleOfDocument;
+  private boolean maze;
+  private boolean poultry;
+  private boolean fish;
+  private boolean beef;
 }
