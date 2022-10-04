@@ -1,0 +1,23 @@
+version: "3.4"
+
+services:
+
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD-admin}
+      # MONGO_INITDB_DATABASE: ditect-db
+
+  ditect-service:
+    image: ghcr.io/ditect-eu/ditect-service:latest
+    depends_on:
+      - mongodb
+    ports:
+      - 8080:8080
+    environment:
+      - DB_HOST=mongodb:27017
+      - DB_USER=admin
+      - DB_PASS=admin
+      # - MNGM_PORT=
+      # - MONGODB_URL=mongodb://root:${SECRET_KEY-oursecretkey}@mongodb:27017/

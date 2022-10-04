@@ -1,4 +1,4 @@
-name: Publish Container
+name: Build & publish Container
 
 on:
   push:
@@ -14,19 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up JDK 11 for deploy to GitHub Container Registry
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: '11'
           server-id: ghcr.io
+
       - name: Docker Login
         uses: azure/docker-login@v1
         with:
           login-server: docker.pkg.github.com
           username: $GITHUB_ACTOR
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish to GitHub Container Registry
         run: mvn compile jib:build -Ddocker.registry=ghcr.io/ditect-eu
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
